@@ -1,33 +1,7 @@
-
-
 class Person:
     def __init__(self, name, age):
         self.name = name
         self.age = age
-
-class Book:
-    def __init__(self, title, author, price):
-        self.title = title
-        self.author = author
-        self.price = price
-
-    def get_price(self):
-        return self.price
-
-class Shelf:
-    def __init__(self, books):
-        self.books = books
-
-    def add_book(self, book):
-        self.books.append(book)
-
-    def get_total_books(self):
-        return len(self.books)
-
-class Library:
-    def __init__(self, shelves):
-        self.shelves = shelves
-        #
 
 class Author(Person):
     def __init__(self, name, age, books_written):
@@ -54,8 +28,8 @@ class Librarian(Person):
         super().__init__(name, age)
         self.employee_id = employee_id
 
-    def manage_books(self):
-        print("da")
+    def manage_library(self, library):
+        return library
 
 class LibraryMember:
     def __init__(self, member_id, borrowed_books):
@@ -67,5 +41,5 @@ class LibraryMember:
 
 class RegularMember(Person, LibraryMember):
     def __init__(self, name, age, member_id, borrowed_books):
-        super(Person).__init__(name, age)
-        super(LibraryMember).__init__(member_id, borrowed_books)
+        Person.__init__(self, name, age)
+        LibraryMember.__init__(self, member_id, borrowed_books)
